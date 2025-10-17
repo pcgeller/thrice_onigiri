@@ -51,6 +51,33 @@
       margin: 8px 0;
       font-weight: bold;
     }
+
+    /* Responsive document viewer */
+    .doc-embed {
+      width: 100%;
+      max-width: 900px; /* widen a bit beyond text for readability */
+      margin: 10px 20px 40px 20px;
+    }
+    .doc-embed .iframe-wrap {
+      position: relative;
+      padding-top: 56.25%; /* 16:9 responsive ratio */
+      height: 0;
+      overflow: hidden;
+      border-radius: 12px;
+      border: 1px solid #ddd;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+      background: #fff;
+    }
+    .doc-embed iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: 0;
+    }
+    .doc-embed .fallback {
+      margin-top: 10px;
+      font-size: 0.95rem;
+    }
   </style>
 </head>
 <body>
@@ -63,13 +90,32 @@
     <ul>
       <li><a href="https://littleampscoffee.com" target="_blank">8 Nov 2025 - Little Amps on 133 State St @ 10:30a - Sell Out</a></li>
       <li><a href="https://hbgflea.com" target="_blank">6 Dec 2025 - HBG Flea in Strawberry Square @ 10:00a - 3p</a></li>
-
     </ul>
+  </div>
+
+  <!-- Live OneDrive/Office viewer embed -->
+  <div class="doc-embed" aria-label="Embedded document preview">
+    <div class="iframe-wrap">
+      <!-- Replace ENCODED_FILE_URL_HERE with your encoded file URL -->
+    <iframe src="https://1drv.ms/w/c/54d0936367723832/IQQzIZDQ-YxKQ6nFYOIlo9gnAfCUpyQL67ROtvRWgXtb1pU?em=2" width="476px" height="288px" frameborder="0">This is an embedded <a target="_blank" href="https://office.com">Microsoft Office</a> document, powered by <a target="_blank" href="https://office.com/webapps">Office</a>.</iframe>
+    </div>
+    <p class="fallback">
+      Having trouble viewing? <a href="https://1drv.ms/w/c/54d0936367723832/ETMhkND5jEpDqcVg4iWj2CcBsuOOuFQYt2V4uArHytHnow" target="_blank" rel="noopener">Open the document in a new tab</a>.
+    </p>
   </div>
 
   <div class="contact">
     <p>📸 Instagram: <a href="https://instagram.com/thriceonigiri">@thriceonigiri</a></p>
     <p>✉️ Email: <a href="mailto:contact@thriceonigiri.com">contact@thriceonigiri.com</a></p>
   </div>
+
+  <!-- Helper (optional): paste your raw OneDrive link into FILE_URL below, it will log the encoded URL in the console -->
+  <script>
+    // Optional helper: set your raw share link here to get an encoded version in your console.
+    const FILE_URL = "https://1drv.ms/w/c/54d0936367723832/ETMhkND5jEpDqcVg4iWj2CcBsuOOuFQYt2V4uArHytHnow"; // e.g., "https://1drv.ms/w/c/54d0936367723832/ETMhkND5jEpDqcVg4iWj2CcBsuOOuFQYt2V4uArHytHnow?e=4E7H5V"
+    if (FILE_URL) {
+      console.log("Encoded URL for embed:", encodeURIComponent(FILE_URL));
+    }
+  </script>
 </body>
 </html>
