@@ -52,6 +52,80 @@
       font-weight: bold;
     }
 
+    /* --- Sample Product styles --- */
+    .product {
+      width: 100%;
+      max-width: 900px;
+      margin: 25px 20px 10px 20px;
+      padding: 18px;
+      border: 1px solid #eee;
+      border-radius: 14px;
+      background: #fff;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+      text-align: left;
+    }
+    .product-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .product-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+    .price {
+      margin-left: auto;
+      background: #0e7a0d;
+      color: #fff;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+    .subtitle {
+      color: #666;
+      font-size: 0.95rem;
+      margin-top: 2px;
+      margin-bottom: 14px;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+    .gallery figure {
+      margin: 0;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid #eee;
+      background: #fafafa;
+    }
+    .gallery img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+      border-radius: 0; /* override global img radius inside cards */
+    }
+    .gallery figcaption {
+      font-size: 0.85rem;
+      color: #555;
+      padding: 6px 8px 10px 8px;
+      text-align: center;
+    }
+    @media (max-width: 640px) {
+      .gallery {
+        grid-template-columns: 1fr 1fr;
+      }
+      .gallery img {
+        height: 160px;
+      }
+      .product-header { gap: 6px; }
+      .price { margin-left: 0; }
+    }
+
     /* Responsive document viewer */
     .doc-embed {
       width: 100%;
@@ -93,11 +167,32 @@
     </ul>
   </div>
 
+    <!-- Image gallery: replace image paths with your actual files -->
+    <div class="gallery" role="list">
+      <figure role="listitem">
+        <img src="images/IMG_8853 wm.jpg" alt="tuna mayo onigiri in table setup" loading="lazy" />
+        <figcaption>Yummy!</figcaption>
+      </figure>
+      <figure role="listitem">
+        <img src="images/seaweed_salad_onigiri.jpg" alt="seaweed salad onigiri" loading="lazy" />
+        <figcaption>Delicious</figcaption>
+      </figure>
+      <figure role="listitem">
+        <img src="images/tuna_mayo_midtown_cinema.jpg" alt="tuna mayo outside midtown cinema" loading="lazy" />
+        <figcaption>Made in Harrisburg.</figcaption>
+      </figure>
+    </div>
+  </section>
+
   <!-- Live OneDrive/Office viewer embed -->
   <div class="doc-embed" aria-label="Embedded document preview">
     <div class="iframe-wrap">
-      <!-- Replace ENCODED_FILE_URL_HERE with your encoded file URL -->
-    <iframe src="https://1drv.ms/w/c/54d0936367723832/IQQzIZDQ-YxKQ6nFYOIlo9gnAfCUpyQL67ROtvRWgXtb1pU?em=2" width="476px" height="288px" frameborder="0">This is an embedded <a target="_blank" href="https://office.com">Microsoft Office</a> document, powered by <a target="_blank" href="https://office.com/webapps">Office</a>.</iframe>
+      <!-- You can use the official OneDrive embed or Office Viewer.
+           Keeping your current OneDrive embed below: -->
+      <iframe src="https://1drv.ms/w/c/54d0936367723832/IQQzIZDQ-YxKQ6nFYOIlo9gnAfCUpyQL67ROtvRWgXtb1pU?em=2" width="476px" height="288px" frameborder="0">
+        This is an embedded <a target="_blank" href="https://office.com">Microsoft Office</a> document, powered by
+        <a target="_blank" href="https://office.com/webapps">Office</a>.
+      </iframe>
     </div>
     <p class="fallback">
       Having trouble viewing? <a href="https://1drv.ms/w/c/54d0936367723832/ETMhkND5jEpDqcVg4iWj2CcBsuOOuFQYt2V4uArHytHnow" target="_blank" rel="noopener">Open the document in a new tab</a>.
@@ -111,8 +206,7 @@
 
   <!-- Helper (optional): paste your raw OneDrive link into FILE_URL below, it will log the encoded URL in the console -->
   <script>
-    // Optional helper: set your raw share link here to get an encoded version in your console.
-    const FILE_URL = "https://1drv.ms/w/c/54d0936367723832/ETMhkND5jEpDqcVg4iWj2CcBsuOOuFQYt2V4uArHytHnow"; // e.g., "https://1drv.ms/w/c/54d0936367723832/ETMhkND5jEpDqcVg4iWj2CcBsuOOuFQYt2V4uArHytHnow?e=4E7H5V"
+    const FILE_URL = "https://1drv.ms/w/c/54d0936367723832/ETMhkND5jEpDqcVg4iWj2CcBsuOOuFQYt2V4uArHytHnow";
     if (FILE_URL) {
       console.log("Encoded URL for embed:", encodeURIComponent(FILE_URL));
     }
