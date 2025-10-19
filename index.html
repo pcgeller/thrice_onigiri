@@ -171,15 +171,15 @@
     <div class="gallery" role="list">
       <figure role="listitem">
         <img src="images/IMG_8853 wm.jpg" alt="tuna mayo onigiri in table setup" loading="lazy" />
-        <figcaption>Yummy!</figcaption>
-      </figure>
-      <figure role="listitem">
-        <img src="images/seaweed_salad_onigiri.jpg" alt="seaweed salad onigiri" loading="lazy" />
-        <figcaption>Delicious</figcaption>
+        <figcaption></figcaption>
       </figure>
       <figure role="listitem">
         <img src="images/tuna_mayo_midtown_cinema.jpg" alt="tuna mayo outside midtown cinema" loading="lazy" />
-        <figcaption>Made in Harrisburg.</figcaption>
+        <figcaption>Harrisburg Product</figcaption>
+      </figure>
+      <figure role="listitem">
+        <img src="images/seaweed_salad_onigiri.jpg" alt="seaweed salad onigiri" loading="lazy" />
+        <figcaption></figcaption>
       </figure>
     </div>
   </section>
@@ -211,5 +211,27 @@
       console.log("Encoded URL for embed:", encodeURIComponent(FILE_URL));
     }
   </script>
+<!-- Enable pictures to go fullscreen -->
+<script>
+  document.querySelectorAll('.gallery img').forEach(img => {
+    img.addEventListener('click', () => {
+      const overlay = document.createElement('div');
+      overlay.style.position = 'fixed';
+      overlay.style.top = 0;
+      overlay.style.left = 0;
+      overlay.style.width = '100%';
+      overlay.style.height = '100%';
+      overlay.style.background = 'rgba(0,0,0,0.85)';
+      overlay.style.display = 'flex';
+      overlay.style.justifyContent = 'center';
+      overlay.style.alignItems = 'center';
+      overlay.style.cursor = 'zoom-out';
+      overlay.style.zIndex = 9999;
+      overlay.innerHTML = `<img src="${img.src}" style="max-width:90%;max-height:90%;border-radius:12px;">`;
+      overlay.addEventListener('click', () => document.body.removeChild(overlay));
+      document.body.appendChild(overlay);
+    });
+  });
+</script>
 </body>
 </html>
